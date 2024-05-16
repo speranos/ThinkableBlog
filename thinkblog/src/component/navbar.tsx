@@ -19,7 +19,7 @@ export function Navbar() {
           <Link legacyBehavior href="/Dashboard">
             <a className="text-white hover:text-gray-300">Dashboard</a>
           </Link>
-          <Link legacyBehavior href="/Signin">
+          <Link legacyBehavior href="/api/auth/signin">
             <a className="text-purple-700 hover:text-gray-300">Signin</a>
           </Link>
         </div>
