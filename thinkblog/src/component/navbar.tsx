@@ -19,7 +19,7 @@ export function Navbar() {
           <Link legacyBehavior href="/Tranding">
             <a className="text-purple-700 hover:text-gray-300">Tranding</a>
           </Link>
-          <Link legacyBehavior href="/Dashboard">
+          <Link legacyBehavior href="/api/dashboard/56313785-70cb-49f0-8bb7-21eb92cf6e66">
             <a className="text-white hover:text-gray-300">Dashboard</a>
           </Link>
           <Link legacyBehavior href="/api/auth/signin">
