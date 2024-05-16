@@ -1,0 +1,15 @@
+version: '3'
+services:
+
+  database:
+    build:
+      context: thinkblog/database/
+    env_file:
+      - thinkblog/.env
+    ports:
+      - "5432:5432"
+    networks:
+      - next
+networks:
+  next:
+    driver: bridge

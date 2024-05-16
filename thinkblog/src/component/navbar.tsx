@@ -4,9 +4,12 @@ export function Navbar() {
   return (
     <div className="flex flex-col items-center p-24">
       <div className="text-center mb-8">
-        <h1 className="text-5xl font-extrabold mb-8 text-purple-700">
+        <h1 className="text-5xl font-extrabold mb-8">
           <Link legacyBehavior href="/">
-            <a className="text-purple-700">Think<span className="text-white text-6xl">Blog</span></a>
+            <a className="text-purple-700">Think</a>
+          </Link>
+          <Link legacyBehavior href="/">
+            <a className="text-white">Blog</a>
           </Link>
         </h1>
         <div className="space-x-4">
