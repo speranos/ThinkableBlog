@@ -4,9 +4,9 @@ import { useState } from 'react';
 import Link from 'next/link';
 
 const dummyUser = {
-  name: "John Doe",
-  avatar: "https://via.placeholder.com/100",
-  email: "john.doe@example.com",
+  name: "Amine Amine",
+  avatar: "https://lh3.googleusercontent.com/a/ACg8ocKYE9DmdNa4_RW1pYjj_Ulw7lEgSo6qDgJrJg04lEz7UbIGY91PJw=s96-c",
+  email: "ANA@GG.com",
 };
 
 const dummyPosts = [
@@ -21,7 +21,6 @@ export default function PostManagement() {
   const [posts, setPosts] = useState(dummyPosts);
 
   const handleDeletePost = (postId: number) => {
-    // For now, just filter out the post with the given ID
     setPosts(posts.filter(post => post.id !== postId));
   };
 
@@ -29,13 +28,12 @@ export default function PostManagement() {
     <div className="container mx-auto mt-5 py-8">
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-3xl font-bold">Welcome, {dummyUser.name}!</h1>
-        <Link legacyBehavior href="/create-post">
+        <Link legacyBehavior href="/create">
           <a className="bg-purple-700 text-white py-2 px-4 rounded hover:bg-purple-800">
             Create New Post
           </a>
         </Link>
       </div>
-      <p>Email: {dummyUser.email}</p>
       <img src={dummyUser.avatar} alt="User Avatar" className="w-24 h-24 rounded-full mb-8" />
       <h2 className="text-4xl font-bold mb-4">Your Posts</h2>
       {posts.map(post => (
