@@ -1,7 +1,0 @@
-FROM postgres:alpine
-
-ARG POSTGRES_PASSWORD POSTGRES_USER POSTGRES_DB
-
-EXPOSE 5432
-
-CMD ["postgres"]
