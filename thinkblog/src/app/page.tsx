@@ -31,6 +31,7 @@ const posts = [
   
 ];
 
+
 export default function Home() {
     return (
     <div>

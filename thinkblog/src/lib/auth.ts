@@ -28,13 +28,6 @@ callbacks: {
         avatar: user.image,
       },
     });
-    // await prisma.user.create ({
-    //   data: {
-    //   name: user.name,
-    //   email: user.email,
-    //   avatar: user.image,
-    //   }
-    // })
     return true
   },
   async redirect({ url, baseUrl }) {
@@ -42,13 +35,11 @@ callbacks: {
     return baseUrl
   },
   async session({ session, user, token }) {
-    console.log("session ==== ")
-    console.log(session)
     return session
   },
   async jwt({ token, user, account, profile, isNewUser }) {
-    console.log("token ==== ")
-    console.log(token)
+    // console.log("token ==== ")
+    // console.log(token)
     return token
   }
 }

@@ -2,7 +2,8 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-
+import { useSession } from "next-auth/react";
+import { prisma } from '@/lib/prismaclt';
 const dummyUser = {
   name: "Amine Amine",
   avatar: "https://lh3.googleusercontent.com/a/ACg8ocKYE9DmdNa4_RW1pYjj_Ulw7lEgSo6qDgJrJg04lEz7UbIGY91PJw=s96-c",
@@ -17,9 +18,17 @@ const dummyPosts = [
   { id: 5, title: "Post 5", content: "Content of post 5" },
 ];
 
-export default function PostManagement() {
+export default async function PostManagement() {
   const [posts, setPosts] = useState(dummyPosts);
-
+//   const { data: session, status } = useSession()
+//   if(session){
+//       var user:string = session.user.email;
+//       console.log(user);
+  
+//   var posts: any = await prisma.user.findMany({
+//       where: {email:user},
+//   });
+  console.log(posts);
   const handleDeletePost = (postId: number) => {
     setPosts(posts.filter(post => post.id !== postId));
   };
@@ -55,4 +64,5 @@ export default function PostManagement() {
       ))}
     </div>
   );
-}
+      }
+// }
