@@ -7,10 +7,10 @@ import { useSession, signOut } from "next-auth/react";
 function Navbar() {
 
   const { data: session, status } = useSession()
-  console.log(session);
+  // console.log(session);
   return (
     <div className="flex flex-col items-center">
-      <Logo />
+      <Logo/>
       <div className="flex mt-4" role="group" style={{ gap: '1rem' }}>
         <Link legacyBehavior href="/Latest">
           <a className="text-white hover:text-gray-300">Latest</a>

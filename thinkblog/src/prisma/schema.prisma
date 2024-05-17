@@ -28,10 +28,10 @@ model Post {
   id      String @id @default(uuid())
   content     String
   title       String
-  creation    DateTime @default(now())
+  creation    DateTime? @default(now())
   
   authorId      String
-  author   User @relation(fields: [authorId], references: [id])
+  author   User @relation(fields: [authorId], references: [email])
 
   Cmnt        Comments[]
 }

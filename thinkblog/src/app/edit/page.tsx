@@ -1,51 +1,76 @@
+
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 
-export default function CreatePost() {
+export default function EditPost() {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const router = useRouter();
   const { data: session, status } = useSession();
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  useEffect(() => {
+    const postId = sessionStorage.getItem('editPostId');
+    if (!postId || !session) return;
 
-
-    const newPost = {
-      title,
-      content,
-    };
-    console.log(newPost);
-    if(session){
+    const fetchPost = async () => {
       try {
-        const userEmail = session.user.email;
-        const response = await fetch('/api/dashboard', {
-          method: 'POST',
+        const response = await fetch('/api/edit-post', {
+          method: 'GET',
           headers: {
-            'content': encodeURIComponent(newPost.content),
-            'tittle': newPost.title,
-            'email': userEmail,
+            'email': session.user.email,
+            'postid': postId,
           },
         });
-
-        if (response.ok) {
-          router.push('/Dashboard');
-        } else {
-          console.error('Failed to create post:', response.statusText);
+        if (!response.ok) {
+          throw new Error('Failed to fetch post');
         }
+        const postData = await response.json();
+        setTitle(postData.title);
+        setContent(postData.content);
       } catch (error) {
-        console.error('Error creating post:', error);
+        console.error('Error fetching post:', error);
       }
-    }
-  }
+    };
 
+    fetchPost();
+  }, [session]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const postId = sessionStorage.getItem('editPostId');
+    if (!postId) return;
+
+    try {
+      const response = await fetch(`/api/edit-post`, {
+        method: 'PUT',
+        headers: {
+            'postid': postId,
+            'title': title,
+            'content': content,
+          },
+      });
+
+      if (response.ok) {
+        router.push(`/Dashboard`);
+      } else {
+        console.error('Failed to update post:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error updating post:', error);
+    }
+  };
+
+  if (status === 'loading') {
+    return <p>Loading...</p>;
+  }
 
   return (
     <div className="container mx-auto mt-5 py-8">
-      <h1 className="text-3xl font-bold mb-8">Create New Post</h1>
+      <h1 className="text-3xl font-bold mb-8">Edit Post</h1>
       <form onSubmit={handleSubmit} className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
         <div className="mb-4">
           <label htmlFor="title" className="block text-gray-700 dark:text-gray-300 font-bold mb-2">
@@ -76,10 +101,9 @@ export default function CreatePost() {
           />
         </div>
         <button type="submit" className="bg-purple-700 text-white py-2 px-4 rounded hover:bg-purple-800">
-          Create Post
+          Save Changes
         </button>
       </form>
     </div>
   );
 }
-
