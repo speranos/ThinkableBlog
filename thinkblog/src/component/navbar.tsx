@@ -12,7 +12,7 @@ function Navbar() {
     <div className="flex flex-col items-center">
       <Logo/>
       <div className="flex mt-4" role="group" style={{ gap: '1rem' }}>
-        <Link legacyBehavior href="/Latest">
+        <Link legacyBehavior href="/latest">
           <a className="text-white hover:text-gray-300">Latest</a>
         </Link>
         <Link legacyBehavior href="/Trending">

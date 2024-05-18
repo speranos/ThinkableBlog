@@ -1,25 +1,6 @@
-// import Image from "next/image";
-// import Link from 'next/link';
-
-// export default function Home() {
-//   return (
-//     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-//       <h1 className="text-4xl font-bold mb-8">
-//         <Link legacyBehavior href="/">
-//           <a className="text-blue-600 hover:underline">ThinkBlog</a>
-//         </Link>
-//       </h1>
-//       {/* Your additional content here */}
-//     </main>
-//   );
-// }
-"use client";
-import Image from "next/image";
-import Link from 'next/link';
-import Navbar from "@/component/navbar";
+"use client"
 import { useState, useEffect } from 'react';
-
-
+import Link from "next/link";
 
 export default function Home() {
   const [posts, setPosts] = useState([]);
@@ -27,7 +8,7 @@ export default function Home() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:3000/api/getposts");
+        const response = await fetch("/api/getlatest");
         if (!response.ok) {
           throw new Error('Failed to fetch posts');
         }
@@ -41,8 +22,14 @@ export default function Home() {
     fetchData();
   }, []);
 
+  const truncateContent = (content, maxLength) => {
+    if (content.length > maxLength) {
+      return content.substring(0, maxLength) + "...";
+    }
+    return content;
+  };
 
-    return (
+  return (
     <div>
       <main className="container mx-auto mt-5 py-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
