@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<DOCTYPE html>
 <html lang="en">
 <head>
 <body>
@@ -84,4 +84,15 @@ yarn start</code></pre>
   
   <h2>Features</h2>
   <ul>
-    <li>Create, read, update, and 
+    <li>Create, read, update ... </li>
+  </ul>
+<h2>Auth</h2>
+<img src="https://github.com/speranos/ThinkableBlog/assets/57815941/2729a701-4b59-4e63-a66b-978b7344398b">
+<h2>Home</h2>
+<img src="https://github.com/speranos/ThinkableBlog/assets/57815941/c94b727b-b8be-4de6-8948-1ed1f8405f96">
+<h2>Dashboard</h2>
+<img src="https://github.com/speranos/ThinkableBlog/assets/57815941/cf71a64e-a2b5-4849-92aa-27813da693c1">
+<h2>Post Page</h2>
+<img src="https://github.com/speranos/ThinkableBlog/assets/57815941/45d9a918-a6df-4a73-8f11-04133674dbfd">
+<h2>Post Creation</h2>
+<img src="https://github.com/speranos/ThinkableBlog/assets/57815941/f30577a0-595c-4390-bbc3-ab732db81e00">
