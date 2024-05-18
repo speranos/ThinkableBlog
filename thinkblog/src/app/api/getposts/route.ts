@@ -9,6 +9,7 @@ export async function GET(req: Request) {
     //   const id = req.headers.get('postid');
       const post = await prisma.post.findMany({
         select: {
+            id: true,
             content: true,
             title: true,
         }

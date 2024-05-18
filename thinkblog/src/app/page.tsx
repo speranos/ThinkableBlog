@@ -21,6 +21,14 @@ import { useState, useEffect } from 'react';
 
 
 
+
+const truncateContent = (content, maxLength) => {
+  if (content.length <= maxLength) {
+    return content;
+  }
+  return content.slice(0, maxLength) + '...';
+};
+
 export default function Home() {
   const [posts, setPosts] = useState([]);
 
@@ -41,6 +49,8 @@ export default function Home() {
     fetchData();
   }, []);
 
+  const maxLength = 100;
+
 
     return (
     <div>
@@ -49,11 +59,11 @@ export default function Home() {
           {posts.map(post => (
             <div key={post.id} className="dark:bg-gray-900 rounded-lg p-4 shadow-md">
               <h2 className="text-xl text-purple-700 font-semibold mb-2">{post.title}</h2>
-              <p className="text-gray-600">{post.content}</p>
-              <Link legacyBehavior href={`/posts/${post.id}`}>
+              <p className="text-gray-600">{truncateContent(post.content, maxLength)}</p>
+              <Link legacyBehavior href={`/post/${post.id}`}>
                 <a className="text-purple-700 hover:underline mt-2 block">Read more</a>
               </Link>
-            </div>
+            </div> 
           ))}
         </div>
       </main>

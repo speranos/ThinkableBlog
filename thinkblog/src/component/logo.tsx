@@ -11,6 +11,11 @@ export function Logo(){
               <a className="text-white">Blog</a>
             </Link>
           </div>
+          <div className="text-center items-center font-extrabold">
+          <span className="text-white"> Keep </span>
+          <span className="text-purple-700"> it </span>
+          <span className="text-purple-700"> simple. </span>
+        </div>
         </div>
     </div>
     // <h1 className="text-5xl font-bold text-purple-700">ThinkBlog</h1>
